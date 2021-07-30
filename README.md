@@ -1,1 +1,1 @@
-# Front_end
+# Front-end code for projects.
