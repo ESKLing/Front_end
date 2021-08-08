@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import ToDos from "./containers/ToDos";
+import ToDos from "./components/ToDos";
 
 function App() {
   //to set the state below
@@ -28,9 +28,17 @@ function App() {
     });
   }
 
+  function deleteToDo(toDoId) {
+    axios.delete(`http://localhost:8080/todo/${toDoId}/delete`).then((res) => {
+      console.log(res);
+      setToDos((toDos) => [...toDos, res.data]);
+      // to add this new item to the current state and force a re-render
+    });
+  }
+
   return (
     <div className="App">
-      <ToDos toDos={toDos} />
+      <ToDos toDos={toDos} delete={deleteToDo} />
       <button onClick={saveToDo}>Add To Do</button>
     </div>
   );
