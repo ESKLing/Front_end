@@ -1,7 +1,7 @@
 import React from "react";
 
 //functional component
-const ToDos = (props) => {
+const toDos = (props) => {
   return props.toDos.map((toDo, index) => {
     return (
       <div key={index}>
@@ -13,4 +13,4 @@ const ToDos = (props) => {
   });
 };
 
-export default ToDos;
+export default toDos;
