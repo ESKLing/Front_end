@@ -10,10 +10,9 @@ const addToDo = (props) => {
           name="toDo"
           value={props.value}
           onChange={props.onChange}
-          //   onChange={(e) => console.log("Val:", e.target.value)}
         />
       </label>
-      <input type="submit" value="Submit" onClick={props.add} />
+      <input type="submit" value="Submit" onClick={props.submit} />
     </form>
   );
 };

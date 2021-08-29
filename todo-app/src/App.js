@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useImperativeHandle } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import ToDos from "./components/ToDos";
@@ -36,8 +36,12 @@ function App() {
     setNewToDo(e.target.value);
   }
 
-  function addToDo() {
-    console.log(newToDo);
+  function submitToDo() {
+    axios
+      .post(`http://localhost:8080/todo/addNew`, { name: newToDo })
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   function deleteToDo(toDoId, toDoName) {
@@ -50,7 +54,11 @@ function App() {
 
   return (
     <div className="App">
-      <AddToDo add={addToDo} value={newToDo} onChange={handleToDoChange} />
+      <AddToDo
+        submit={submitToDo}
+        value={newToDo}
+        onChange={handleToDoChange}
+      />
       <ToDos toDos={toDos} delete={deleteToDo} />
       {/* <button onClick={saveToDo}>Add To Do</button> */}
     </div>
