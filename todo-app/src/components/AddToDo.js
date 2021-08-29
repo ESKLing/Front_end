@@ -1,10 +1,12 @@
 import React from "react";
+import "../App.css";
 
 const addToDo = (props) => {
   return (
-    <form>
+    <form
+    // onSubmit={props.submitHandler}
+    >
       <label>
-        To do:
         <input
           type="text"
           name="toDo"
