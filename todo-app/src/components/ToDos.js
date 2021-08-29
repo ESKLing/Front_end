@@ -7,7 +7,6 @@ const toDos = (props) => {
     return (
       <div key={index} class="todo">
         <h1>{toDo.name}</h1>
-        {/* <p>{toDo.id}</p> */}
         <button onClick={() => props.delete(toDo.id, toDo.name)}>delete</button>
       </div>
     );
