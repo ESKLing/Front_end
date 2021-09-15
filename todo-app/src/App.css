@@ -1,17 +1,33 @@
 body {
   margin: 50px;
   font-family: "Times New Roman", Times, serif;
+  background-color: #d3e1f3;
 }
 
 .todo {
   margin: auto;
   width: 25%;
-  border: 1px solid black;
-  text-align: center;
+  border: 1px solid rgb(148, 147, 147);
+  border-radius: 5px;
+  background-color: #dfe2e9;
+  padding-left: 1em;
 }
 
 form {
   margin: auto;
-  width: 25%;
   text-align: center;
 }
+
+.bin {
+  float: right;
+  color: rgb(212, 93, 93);
+  padding-right: 0.5em;
+}
+
+input {
+  width: 23.5%;
+}
+
+/* .add {
+  height: 2em;
+} */

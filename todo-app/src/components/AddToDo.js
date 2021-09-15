@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { BsPlus } from "react-icons/bs";
 
 const addToDo = (props) => {
   return (
@@ -14,7 +15,10 @@ const addToDo = (props) => {
           onChange={props.onChange}
         />
       </label>
-      <input type="submit" value="Submit" onClick={props.submit} />
+      <button onClick={props.submit} class="add">
+        <BsPlus />
+      </button>
+      {/* <input type="submit" value="Submit" onClick={props.submit} /> */}
     </form>
   );
 };
