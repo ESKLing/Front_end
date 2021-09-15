@@ -48,6 +48,10 @@ function App() {
     });
   }
 
+  function checkedToDo() {
+    console.log("checked");
+  }
+
   return (
     <div className="App">
       <AddToDo
@@ -56,7 +60,7 @@ function App() {
         value={newToDo}
         onChange={handleToDoChange}
       />
-      <ToDos toDos={toDos} delete={deleteToDo} />
+      <ToDos toDos={toDos} delete={deleteToDo} checked={checkedToDo} />
     </div>
   );
 }

@@ -8,6 +8,7 @@ const toDos = (props) => {
     return (
       <div key={index} class="todo">
         <h3>
+          <input type="checkbox" onClick={props.checked} />
           {toDo.name}
           <BsFillTrashFill
             onClick={() => props.delete(toDo.id, toDo.name)}
