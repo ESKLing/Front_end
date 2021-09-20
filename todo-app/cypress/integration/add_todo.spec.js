@@ -12,13 +12,15 @@ describe("add to do", () => {
   //     // asserts that the to do card is visible after the first two steps are completed
   //   });
 
-  // use mock data so that we don't do a post requst to the actual db
-  it("should diplay new to do card when add button is clicked with mock data", () => {
-    cy.intercept("POST", "http://localhost:8080/todo/addNew", {
-      statusCode: 200,
-      body: "added",
-    });
+  // mock post request so we don't interact with the db
+  it("should send expected data as a (mock) post request", () => {
+    cy.intercept("POST", "http://localhost:8080/todo/addNew", {}).as(
+      "new_todo"
+    );
 
-    cy.get("[class='add']").click();
+    cy.get("input").type("eat lunch");
+    cy.get(".add").click();
+
+    cy.wait("@new_todo").its("request.body.name").should("eq", "eat lunch");
   });
 });
