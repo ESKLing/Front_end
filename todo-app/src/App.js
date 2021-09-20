@@ -8,6 +8,7 @@ function App() {
   //to set the state below
   const [toDos, setToDos] = useState([]);
   const [newToDo, setNewToDo] = useState("");
+  const [updatedToDo, setUpdatedToDo] = useState("");
 
   const fetchToDos = () => {
     axios.get("http://localhost:8080/todo").then((res) => {
@@ -52,6 +53,22 @@ function App() {
     console.log("checked");
   }
 
+  function handleUpdateToDo(value, id) {
+    setUpdatedToDo(value);
+  }
+
+  function updateToDo(toDoId) {
+    axios
+      .put(`http://localhost:8080/todo/${toDoId}/update`, {
+        name: updatedToDo,
+      })
+      .then((res) => {
+        const newToDos = [...toDos];
+        newToDos.find((toDo) => toDo.id === toDoId).name = updatedToDo;
+        setToDos(newToDos);
+      });
+  }
+
   return (
     <div className="App">
       <AddToDo
@@ -60,7 +77,14 @@ function App() {
         value={newToDo}
         onChange={handleToDoChange}
       />
-      <ToDos toDos={toDos} delete={deleteToDo} checked={checkedToDo} />
+      <ToDos
+        toDos={toDos}
+        delete={deleteToDo}
+        checked={checkedToDo}
+        // value={updatedToDo}
+        onChange={handleUpdateToDo}
+        update={updateToDo}
+      />
     </div>
   );
 }

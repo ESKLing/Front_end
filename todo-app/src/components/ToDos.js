@@ -15,6 +15,13 @@ const toDos = (props) => {
             class="bin"
           />
         </h3>
+        <input
+          type="text"
+          name="update"
+          // value={props.value}
+          onChange={(e) => props.onChange(e.target.value, toDo.id)}
+        />
+        <button onClick={() => props.update(toDo.id)}>update</button>
       </div>
     );
   });
