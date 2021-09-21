@@ -9,19 +9,25 @@ const toDos = (props) => {
       <div key={index} class="todo">
         <h3>
           <input type="checkbox" onClick={props.checked} />
-          {toDo.name}
+          <span class="todo_name" onClick={() => props.toDoClicked(index)}>
+            {toDo.name}
+          </span>
           <BsFillTrashFill
             onClick={() => props.delete(toDo.id, toDo.name)}
             class="bin"
           />
         </h3>
-        <input
-          type="text"
-          name="update"
-          // value={props.value}
-          onChange={(e) => props.onChange(e.target.value, toDo.id)}
-        />
-        <button onClick={() => props.update(toDo.id)}>update</button>
+        {!props.hidden[index] && (
+          <span id="update">
+            <input
+              type="text"
+              name="update"
+              // value={props.value}
+              onChange={(e) => props.onChange(e.target.value, toDo.id)}
+            />
+            <button onClick={() => props.update(toDo.id)}>update</button>
+          </span>
+        )}
       </div>
     );
   });
