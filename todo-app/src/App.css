@@ -34,9 +34,9 @@ input {
   padding-top: 2.5px;
 }
 
-/* #update {
-  display: none;
-} */
+#update {
+  width: 5em;
+}
 
 /* .todo_name:active {
   color: red;

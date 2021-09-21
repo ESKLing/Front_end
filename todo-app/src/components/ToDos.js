@@ -21,12 +21,15 @@ const toDos = (props) => {
         {/* will show this update component when the value of the 'show' state at the
         index is true */}
         {props.show[index] && (
-          <span id="update">
+          <span>
             <input
               type="text"
               name="update"
-              // value={props.value}
-              onChange={(e) => props.onChange(e.target.value, toDo.id)}
+              defaultValue={toDo.name}
+              onChange={(e) => {
+                props.onChange(e.target.value, toDo.id);
+              }}
+              id="update"
             />
             <button onClick={() => props.update(toDo.id)}>update</button>
           </span>

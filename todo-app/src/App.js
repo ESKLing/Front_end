@@ -76,8 +76,21 @@ function App() {
     setShow(updatedShow);
   }
 
+  function hideUpdate() {
+    Object.keys(show).forEach(function (index) {
+      if (show[index] === true) {
+        const newShow = { ...show };
+        newShow[index] = false;
+        setShow(newShow);
+      } else {
+        console.log("all updates hidden");
+      }
+    });
+  }
+
   return (
     <div className="App">
+      <button onClick={hideUpdate}>hide update</button>
       <AddToDo
         // submitHandler={submitHandler}
         submit={submitToDo}
