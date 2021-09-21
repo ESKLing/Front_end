@@ -17,7 +17,10 @@ const toDos = (props) => {
             class="bin"
           />
         </h3>
-        {!props.hidden[index] && (
+
+        {/* will show this update component when the value of the 'show' state at the
+        index is true */}
+        {props.show[index] && (
           <span id="update">
             <input
               type="text"

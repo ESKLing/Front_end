@@ -9,7 +9,7 @@ function App() {
   const [toDos, setToDos] = useState([]);
   const [newToDo, setNewToDo] = useState("");
   const [updatedToDo, setUpdatedToDo] = useState("");
-  const [hidden, setHidden] = useState({});
+  const [show, setShow] = useState({});
 
   const fetchToDos = () => {
     axios.get("http://localhost:8080/todo").then((res) => {
@@ -70,8 +70,10 @@ function App() {
       });
   }
 
-  function handleToDoClicked(toDoId) {
-    setHidden({ ...hidden, [toDoId]: !hidden[toDoId] });
+  function handleToDoClicked(index) {
+    const updatedShow = { ...show };
+    updatedShow[index] = true;
+    setShow(updatedShow);
   }
 
   return (
@@ -86,7 +88,7 @@ function App() {
         toDos={toDos}
         delete={deleteToDo}
         checked={checkedToDo}
-        hidden={hidden}
+        show={show}
         // value={updatedToDo}
         onChange={handleUpdateToDo}
         update={updateToDo}
