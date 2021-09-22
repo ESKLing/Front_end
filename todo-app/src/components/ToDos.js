@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { BsFillTrashFill } from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
 
 //functional component
 const toDos = (props) => {
@@ -13,7 +14,10 @@ const toDos = (props) => {
           {/* will show this component when the value of the 'show' state at the
         index is false */}
           {!props.showUpdate[index] && (
-            <span class="todo_name" onClick={() => props.toDoClicked(index)}>
+            <span
+              class="todo_name"
+              onClick={() => props.toDoClicked(toDo.name, index)}
+            >
               {toDo.name}
             </span>
           )}
@@ -25,13 +29,16 @@ const toDos = (props) => {
               <input
                 type="text"
                 name="update"
-                // defaultValue={toDo.name}
+                value={props.toDoValue}
                 onChange={(e) => {
                   props.onChange(e.target.value, toDo.id);
                 }}
                 id="update"
               />
-              <button onClick={() => props.update(toDo.id)}>update</button>
+              <BsArrowReturnLeft
+                onClick={() => props.update(toDo.id)}
+                class="enter"
+              />
             </span>
           )}
 

@@ -67,10 +67,20 @@ function App() {
         const newToDos = [...toDos];
         newToDos.find((toDo) => toDo.id === toDoId).name = updatedToDo;
         setToDos(newToDos);
+        Object.keys(show).forEach(function (index) {
+          if (show[index] === true) {
+            const newShow = { ...show };
+            newShow[index] = false;
+            setShow(newShow);
+          } else {
+            console.log("all updates hidden");
+          }
+        });
       });
   }
 
-  function handleToDoClicked(index) {
+  function handleToDoClicked(toDoName, index) {
+    setUpdatedToDo(toDoName); //set this state as the to do value so that the input for the update component will be pre-populated with this val
     const updatedShow = { ...show };
     updatedShow[index] = true;
     setShow(updatedShow);
@@ -102,7 +112,7 @@ function App() {
         delete={deleteToDo}
         checked={checkedToDo}
         showUpdate={show}
-        // value={updatedToDo}
+        toDoValue={updatedToDo}
         onChange={handleUpdateToDo}
         update={updateToDo}
         toDoClicked={handleToDoClicked}
