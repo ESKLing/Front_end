@@ -68,19 +68,20 @@ function App() {
         newToDos.find((toDo) => toDo.id === toDoId).name = updatedToDo;
         setToDos(newToDos);
         Object.keys(show).forEach(function (index) {
-          if (show[index] === true) {
-            const newShow = { ...show };
-            newShow[index] = false;
-            setShow(newShow);
-          } else {
-            console.log("all updates hidden");
-          }
+          setShow((show[index] = false));
         });
       });
   }
 
   function handleToDoClicked(toDoName, index) {
     setUpdatedToDo(toDoName); //set this state as the to do value so that the input for the update component will be pre-populated with this val
+
+    // to hide all shown update components before showing the update component at this specific index
+    // could do if statement as well to target only the card with the update component shown (if applicable)
+    Object.keys(show).forEach(function (index) {
+      setShow((show[index] = false));
+    });
+
     const updatedShow = { ...show };
     updatedShow[index] = true;
     setShow(updatedShow);
@@ -88,13 +89,7 @@ function App() {
 
   function hideUpdate() {
     Object.keys(show).forEach(function (index) {
-      if (show[index] === true) {
-        const newShow = { ...show };
-        newShow[index] = false;
-        setShow(newShow);
-      } else {
-        console.log("all updates hidden");
-      }
+      setShow((show[index] = false));
     });
   }
 
