@@ -9,31 +9,37 @@ const toDos = (props) => {
       <div key={index} class="todo">
         <h3>
           <input type="checkbox" onClick={props.checked} />
-          <span class="todo_name" onClick={() => props.toDoClicked(index)}>
-            {toDo.name}
-          </span>
+
+          {/* will show this component when the value of the 'show' state at the
+        index is false */}
+          {!props.showUpdate[index] && (
+            <span class="todo_name" onClick={() => props.toDoClicked(index)}>
+              {toDo.name}
+            </span>
+          )}
+
+          {/* will show this update component when the value of the 'show' state at the
+        index is true */}
+          {props.showUpdate[index] && (
+            <span>
+              <input
+                type="text"
+                name="update"
+                // defaultValue={toDo.name}
+                onChange={(e) => {
+                  props.onChange(e.target.value, toDo.id);
+                }}
+                id="update"
+              />
+              <button onClick={() => props.update(toDo.id)}>update</button>
+            </span>
+          )}
+
           <BsFillTrashFill
             onClick={() => props.delete(toDo.id, toDo.name)}
             class="bin"
           />
         </h3>
-
-        {/* will show this update component when the value of the 'show' state at the
-        index is true */}
-        {props.show[index] && (
-          <span>
-            <input
-              type="text"
-              name="update"
-              defaultValue={toDo.name}
-              onChange={(e) => {
-                props.onChange(e.target.value, toDo.id);
-              }}
-              id="update"
-            />
-            <button onClick={() => props.update(toDo.id)}>update</button>
-          </span>
-        )}
       </div>
     );
   });

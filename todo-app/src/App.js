@@ -101,7 +101,7 @@ function App() {
         toDos={toDos}
         delete={deleteToDo}
         checked={checkedToDo}
-        show={show}
+        showUpdate={show}
         // value={updatedToDo}
         onChange={handleUpdateToDo}
         update={updateToDo}
