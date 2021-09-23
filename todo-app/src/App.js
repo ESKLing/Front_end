@@ -24,10 +24,6 @@ function App() {
   }, []);
   // can input a state item in the [] and if this changes it will automatically call that fetchToDos method(?)
 
-  // function submitHandler(e) {
-  //   e.preventDefault();
-  // }
-
   function handleToDoChange(e) {
     setNewToDo(e.target.value);
   }
@@ -35,11 +31,7 @@ function App() {
   function submitToDo() {
     axios
       .post(`http://localhost:8080/todo/addNew`, { name: newToDo })
-      .then((res) => {
-        console.log(res);
-        // setToDos((toDos) => [...toDos, res.data]);
-        // to add this new item to the current state and force a re-render
-      });
+      .then((res) => {});
   }
 
   function deleteToDo(toDoId, toDoName) {
@@ -87,7 +79,7 @@ function App() {
     setShow(updatedShow);
   }
 
-  function hideUpdate() {
+  function cancelUpdateToDo() {
     Object.keys(show).forEach(function (index) {
       setShow((show[index] = false));
     });
@@ -95,9 +87,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={hideUpdate}>hide update</button>
       <AddToDo
-        // submitHandler={submitHandler}
         submit={submitToDo}
         value={newToDo}
         onChange={handleToDoChange}
@@ -111,6 +101,7 @@ function App() {
         onChange={handleUpdateToDo}
         update={updateToDo}
         toDoClicked={handleToDoClicked}
+        cancelUpdateToDo={cancelUpdateToDo}
       />
     </div>
   );

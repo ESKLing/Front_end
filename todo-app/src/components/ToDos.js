@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsArrowReturnLeft } from "react-icons/bs";
+import { BsXCircle } from "react-icons/bs";
 
 //functional component
 const toDos = (props) => {
@@ -39,6 +40,7 @@ const toDos = (props) => {
                 onClick={() => props.update(toDo.id)}
                 class="enter"
               />
+              <BsXCircle onClick={props.cancelUpdateToDo} class="cancel" />
             </span>
           )}
 

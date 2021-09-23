@@ -42,6 +42,11 @@ input {
   font-size: 0.9em;
 }
 
+.cancel {
+  font-size: 0.9em;
+  color: rgb(212, 93, 93);
+}
+
 /* .todo_name:active {
   color: red;
   

@@ -4,9 +4,7 @@ import { BsPlus } from "react-icons/bs";
 
 const addToDo = (props) => {
   return (
-    <form
-    // onSubmit={props.submitHandler}
-    >
+    <form>
       <label>
         <input
           type="text"
@@ -18,7 +16,6 @@ const addToDo = (props) => {
       <button onClick={props.submit} class="add">
         <BsPlus />
       </button>
-      {/* <input type="submit" value="Submit" onClick={props.submit} /> */}
     </form>
   );
 };
