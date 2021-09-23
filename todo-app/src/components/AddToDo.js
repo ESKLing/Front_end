@@ -11,6 +11,7 @@ const addToDo = (props) => {
           name="toDo"
           value={props.value}
           onChange={props.onChange}
+          maxLength={15}
         />
       </label>
       <button onClick={props.submit} class="add">

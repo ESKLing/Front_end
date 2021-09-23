@@ -3,6 +3,8 @@ import "../App.css";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { BsXCircle } from "react-icons/bs";
+import { BsCircle } from "react-icons/bs";
+import { BsCircleFill } from "react-icons/bs";
 
 //functional component
 const toDos = (props) => {
@@ -10,7 +12,15 @@ const toDos = (props) => {
     return (
       <div key={index} class="todo">
         <h3>
-          <input type="checkbox" onClick={props.checked} />
+          {!toDo.checked && (
+            <BsCircle onClick={() => props.checked(toDo.id)} id="checkbox" />
+          )}
+          {!!toDo.checked && (
+            <BsCircleFill
+              onClick={() => props.checked(toDo.id)}
+              id="checkbox_filled"
+            />
+          )}
 
           {/* will show this component when the value of the 'show' state at the
         index is false */}
@@ -34,6 +44,7 @@ const toDos = (props) => {
                 onChange={(e) => {
                   props.onChange(e.target.value, toDo.id);
                 }}
+                maxLength={15}
                 id="update"
               />
               <BsArrowReturnLeft

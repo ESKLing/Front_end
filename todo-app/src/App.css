@@ -47,6 +47,13 @@ input {
   color: rgb(212, 93, 93);
 }
 
+#checkbox,
+#checkbox_filled {
+  padding-left: 0.5em;
+  padding-right: 1em;
+  font-size: 0.8em;
+}
+
 /* .todo_name:active {
   color: red;
   
