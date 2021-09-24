@@ -43,19 +43,21 @@ function App() {
     });
   }
 
-  function checkedToDo(id) {
-    // toggle state for checked
-    // setChecked({ ...checked, [id]: !checked[id] });
-    // console.log(checked[id]);
-    // const checkedtodo = true;
+  function checkedToDo(toDoId) {
+    // toggle value for checked
+    const newToDos = [...toDos];
+    const currentToDo = newToDos.find((toDo) => toDo.id === toDoId);
+    currentToDo.checked = !currentToDo.checked;
 
-    // axios.put(`http://localhost:8080/todo/${id}/checked`, {
-    //   checked: checkedtodo,
-    // });
-
-    console.log("checked at: ", id);
-    // console.log(checked[id]);
-    console.log(toDos.find((toDo) => toDo.id === id).checked);
+    axios
+      .put(`http://localhost:8080/todo/${toDoId}/update`, {
+        name: currentToDo.name,
+        checked: currentToDo.checked,
+      })
+      .then(() => {
+        setToDos(newToDos);
+        // update checked value at this to do in the state and re-render
+      });
   }
 
   function handleUpdateToDo(value, id) {
@@ -72,9 +74,6 @@ function App() {
       .then((res) => {
         const newToDos = [...toDos];
         newToDos.find((toDo) => toDo.id === toDoId).name = updatedToDo;
-        // const benstodo = newToDos.find((toDo) => toDo.id === toDoId);
-        // benstodo.checked = toDoChecked;
-        // benstodo.checked = !benstodo.checked;
         setToDos(newToDos);
         Object.keys(show).forEach(function (index) {
           setShow((show[index] = false));
