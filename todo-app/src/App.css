@@ -51,7 +51,8 @@ input {
 #checkbox_filled {
   padding-left: 0.5em;
   padding-right: 1em;
-  font-size: 0.8em;
+  font-size: 0.6em;
+  width: 1.1em;
 }
 
 /* .todo_name:active {

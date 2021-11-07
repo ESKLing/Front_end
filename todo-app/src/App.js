@@ -37,7 +37,7 @@ function App() {
 
   function deleteToDo(toDoId, toDoName) {
     axios.delete(`http://localhost:8080/todo/${toDoId}/delete`).then((res) => {
-      console.log("sucessfully deleted" + toDoName);
+      console.log("sucessfully deleted " + toDoName);
       setToDos(toDos.filter((toDo) => toDo.id !== toDoId));
       // updates the state to include all items except the deleted item (with the relevant id)
     });

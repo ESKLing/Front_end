@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { BsFillTrashFill } from "react-icons/bs";
-import { BsArrowReturnLeft } from "react-icons/bs";
+// import { BsArrowReturnLeft } from "react-icons/bs";
 import { BsXCircle } from "react-icons/bs";
 import { BsCircle } from "react-icons/bs";
 import { BsCircleFill } from "react-icons/bs";
@@ -46,11 +46,12 @@ const toDos = (props) => {
                 }}
                 maxLength={15}
                 id="update"
+                onKeyDown={(e) => e.key === "Enter" && props.update(toDo.id)}
               />
-              <BsArrowReturnLeft
+              {/* <BsArrowReturnLeft
                 onClick={() => props.update(toDo.id)}
                 class="enter"
-              />
+              /> */}
               <BsXCircle onClick={props.cancelUpdateToDo} class="cancel" />
             </span>
           )}
