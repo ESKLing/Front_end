@@ -36,6 +36,10 @@ input {
 
 #update {
   width: 10em;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.9em;
 }
 
 .enter {
