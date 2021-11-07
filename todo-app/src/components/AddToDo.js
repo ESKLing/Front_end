@@ -7,16 +7,20 @@ const addToDo = (props) => {
     <form>
       <label>
         <input
+          class="input"
           type="text"
           name="toDo"
+          placeholder="Buy bread"
           value={props.value}
           onChange={props.onChange}
           maxLength={15}
         />
       </label>
-      <button onClick={props.submit} class="add">
-        <BsPlus />
-      </button>
+      {props.value.length >= 1 && (
+        <button onClick={props.submit} class="add">
+          <BsPlus />
+        </button>
+      )}
     </form>
   );
 };
